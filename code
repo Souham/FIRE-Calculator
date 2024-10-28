@@ -1,0 +1,15 @@
+def calculate_fire_target(annual_expenses, withdrawal_rate=0.04):
+    return annual_expenses / withdrawal_rate
+
+def calculate_years_to_fire(current_savings, annual_savings, investment_return, fire_target):
+    years = 0
+    while current_savings < fire_target:
+        current_savings += annual_savings
+        current_savings *= (1 + investment_return)
+        years += 1
+    return years
+
+def fire_calculator(annual_expenses, withdrawal_rate, current_savings, annual_savings, investment_return):
+    fire_target = calculate_fire_target(annual_expenses, withdrawal_rate)
+    years = calculate_years_to_fire(current_savings, annual_savings, investment_return, fire_target)
+    return fire_target, years
