@@ -1,0 +1,14 @@
+import streamlit as st
+
+st.title("FIRE Calculator")
+
+annual_expenses = st.number_input("Enter your annual expenses:")
+withdrawal_rate = st.slider("Withdrawal Rate:", min_value=0.02, max_value=0.05, step=0.01, value=0.04)
+current_savings = st.number_input("Current Savings:")
+annual_savings = st.number_input("Annual Savings:")
+investment_return = st.slider("Investment Return (%):", 0.01, 0.10, step=0.01, value=0.07)
+
+if st.button("Calculate"):
+    fire_target, years = fire_calculator(annual_expenses, withdrawal_rate, current_savings, annual_savings, investment_return)
+    st.write(f"Your FIRE target is: ${fire_target:,.2f}")
+    st.write(f"You'll reach FIRE in approximately {years} years.")
